@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoliSci Study Pro: Master Edition</title>
+    <!-- Tailwind CSS for modern aesthetics -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for professional typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- React and Babel for single-file standalone execution -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .serif { font-family: 'Merriweather', serif; }
+        .flip-card { perspective: 1000px; }
+        .flip-card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .mindmap-node {
+            min-width: 260px;
+            max-width: 380px;
+        }
+        .academic-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useMemo } = React;
+
+        // --- CHAPTER DATA SECTION ---
+        // (Includes Chapters 9-14 with 30+ flashcards and detailed academic long-form outlines)
+
+        const generateCards = (chapterId, terms) => {
+            return terms.map((term, i) => ({
+                id: `${chapterId}-${i}`,
+                question: `Elucidate the concept of: ${term}`,
+                answer: `In political science, this concept pertains to the fundamental operations and theoretical frameworks essential to understanding the ${chapterId === 13 ? 'Islamic' : 'structural'} organization of the state.`
+            }));
+        };
+
+        const chapters = [
+            {
+                id: 9,
+                title: "The Nature of the State",
+                summary: "An ontological inquiry into the 'State' as the central pivot of political organization.",
+                mindMap: {
+                    label: "The Sovereign State",
+                    children: [
+                        { label: "Etymological Roots: Polis, Civitas, Stato" },
+                        { label: "Essential Attributes: Population, Territory, Govt, Sovereignty" },
+                        { label: "Ontological Differentiations: vs Society, vs Government, vs Nation" }
+                    ]
+                },
+                flashcards: generateCards(9, ["Garner's definition", "Sovereignty", "Fixed Territory", "Citizenship", "Aliens", "Permanent Entity", "Abstract Concept", "Physical Basis", "Political Basis", "Internal Supremacy", "External Independence", "Maritime Belt", "Airspace", "Population Quality", "Aristotle's View", "L'etat c'est moi", "De Jure vs De Facto", "Legal Personality", "Compulsory Association", "Public Power", "Monopoly of Force", "Civil Rights", "Political Rights", "Social Complex", "Nation-State", "Etymology", "Status", "Stato", "Machiavelli", "Louis XIV", "Polity"]),
+                longQuestions: [{
+                    question: "Critically evaluate the 'State' as a political entity, detailing its constituent elements and differentiating it from Government and Society.",
+                    structure: [
+                        "PROLEGOMENA: Ontological Status of the State. Define the state through the lens of J.W. Garner ('Political science begins and ends with the state') and Aristotle's teleological view of the state as the 'Good Life'.",
+                        "THE DEMOGRAPHIC SUBSTRATUM (POPULATION): Detailed analysis of the dichotomy between quantitative sufficiency and qualitative vitality. Discuss the nuances of citizenship vs. subjecthood.",
+                        "THE GEOPOLITICAL DIMENSION (TERRITORY): The necessity of 'Fixed Boundaries'. Elaborate on the trifold composition: Terrestrial domain, Maritime belt, and Aerial jurisdiction.",
+                        "THE ADMINISTRATIVE APPARATUS (GOVERNMENT): Differentiate the state as the 'Abstract Master' and government as the 'Concrete Servant'. Analysis of legislative and executive mechanisms.",
+                        "THE ULTIMATE ATTRIBUTE (SOVEREIGNTY): Detailed discourse on the 'Supreme Will'. Internal Sovereignty (monopoly on coercion) vs. External Sovereignty (Inter-state parity).",
+                        "DIALECTICAL DIFFERENTIATIONS: [Subheading: State vs Society] - Scope and Origin. [Subheading: State vs Government] - Permanence vs Changeability.",
+                        "SYNTHETIC CONCLUSION: Summarize the state as the indispensable sovereign association for modern civilization."
+                    ]
+                }]
+            },
+            {
+                id: 10,
+                title: "Historical Evolution",
+                summary: "Tracing the dialectical progression of political structures from primordial kinship to nationhood.",
+                mindMap: {
+                    label: "Evolutionary Progression",
+                    children: [
+                        { label: "Primordial: Matriarchal & Patriarchal" },
+                        { label: "Classical: Greek Polis & Roman Imperium" },
+                        { label: "Medieval: Feudal Fragmentation" },
+                        { label: "Modernity: The Nation-State Consolidation" }
+                    ]
+                },
+                flashcards: generateCards(10, ["Matriarchy", "Patriarchy", "Primitive Society", "Kinship", "Oriental Empires", "Theocracy", "City-State", "Direct Democracy", "Universal Law", "Pax Romana", "Feudalism", "Vassalage", "Manor", "Renaissance", "Reformation", "Westphalia 1648", "Absolutism", "Nation-State", "Colonialism", "Imperialism", "Popular Sovereignty", "Secularization", "Industrialization", "Bureaucracy", "Globalism", "Supranationalism", "Tribalism", "Ancient Law", "Village Communities", "Social Solidarity"]),
+                longQuestions: [{
+                    question: "Discuss the historical trajectory of the state, focusing on the shift from Feudalism to the Nation-State.",
+                    structure: [
+                        "HISTORICAL PRELUDE: Evolution as a Gradual Accretion. Reject the 'Sudden Creation' myth; embrace the evolutionary paradigm of political growth.",
+                        "THE PRIMORDIAL GENESIS: Analysis of Matriarchal and Patriarchal theories. Kinship as the primary adhesive of early social order.",
+                        "THE CLASSICAL DICHOTOMY: [Greek Polis] - Ethical intimacy. [Roman Imperium] - Administrative universality and the birth of 'Universal Law'.",
+                        "THE MEDIEVAL INTERREGNUM: Analyze 'Parcellized Sovereignty'. The tension between the Papacy (Spiritual) and the Emperor (Temporal).",
+                        "THE CRITICAL TURNING POINT: THE RENAISSANCE & REFORMATION. How the decline of Church authority facilitated the need for unified monarchical state.",
+                        "THE CONSOLIDATION OF THE NATION-STATE: The 1648 Treaty of Westphalia as the birth of 'External Sovereignty'. Transition to territorial nationality.",
+                        "EPILOGUE: Reflect on the modern state facing challenges of 21st-century supranationalism and digital globalization."
+                    ]
+                }]
+            },
+            {
+                id: 11,
+                title: "Theories of Origin",
+                summary: "Analyzing the intellectual debate between Divine Right, Force, Social Contract, and Evolution.",
+                mindMap: {
+                    label: "Genealogy of Authority",
+                    children: [
+                        { label: "Speculative: Divine Right & Force" },
+                        { label: "Consensual: Social Contract (Hobbes, Locke, Rousseau)" },
+                        { label: "Scientific: Historical & Evolutionary" }
+                    ]
+                },
+                flashcards: generateCards(11, ["Divine Origin", "Theory of Force", "Social Contract", "Natural Rights", "State of Nature", "General Will", "Leviathan", "Absolute Sovereignty", "Limited Government", "Popular Sovereignty", "Noble Savage", "Civil State", "Mutual Consent", "War of all against all", "Inconvenient Paradise", "Right to Property", "Infallible Will", "Speculative Theory", "Historical Theory", "Kinship factor", "Religious factor", "Economic factor", "Political Consciousness", "Might vs Right", "Sir Robert Filmer", "King James I", "Tabula Rasa", "Fiduciary Trust", "Volonté Générale", "Ancient Status"]),
+                longQuestions: [{
+                    question: "Compare and Contrast the Social Contract theories of Hobbes, Locke, and Rousseau.",
+                    structure: [
+                        "INTRODUCTORY DISCOURSE: The Secularization of Political Authority. Transition from Divine sanction to Human consent.",
+                        "THOMAS HOBBES: THE ABSOLUTIST PARADIGM. Human Nature as 'Bellum Omnium Contra Omnes'. The 'Leviathan' as a non-party sovereign.",
+                        "JOHN LOCKE: THE CONSTITUTIONAL ARCHITECT. The State of Nature as an 'Inconvenient Paradise'. Natural Rights as pre-political.",
+                        "J.J. ROUSSEAU: THE RADICAL DEMOCRAT. The 'Noble Savage' corrupted by civilization. Surrender to the 'General Will'.",
+                        "ANALYTICAL COMPARISON: Detailed comparison of: Human Nature, State of Nature, Terms of Contract, Nature of Sovereignty.",
+                        "SCIENTIFIC CRITIQUE: Historical inaccuracies of the 'Contract' myth. Sir Henry Maine's critique ('Status to Contract').",
+                        "CONCLUDING SYNTHESIS: Impact on modern representative democracy vs. Direct Participation."
+                    ]
+                }]
+            },
+            {
+                id: 12,
+                title: "Traditional and Modern Concepts",
+                summary: "The philosophical tension between the state as a 'Moral End' versus a 'Legal Machine'.",
+                mindMap: {
+                    label: "Philosophical Paradigms",
+                    children: [
+                        { label: "Idealist: The Absolute Organism (Hegel)" },
+                        { label: "Legalist: The Juristic Personality (Austin)" },
+                        { label: "Ethical: The Greek 'Good Life' (Aristotle)" }
+                    ]
+                },
+                flashcards: generateCards(12, ["Idealism", "Legalism", "Juristic Person", "Ethical State", "Absolute Spirit", "Moral Organism", "Rule of Law", "Positive Law", "Natural Law", "Sovereign Will", "Constitutionalism", "Liberalism", "Marxist Theory", "Anarchism", "Socialism", "Fascism", "Welfare State", "Secularism", "Pluralism", "Monism", "Totalitarianism", "Civil Society", "Bureaucracy", "Legitimacy", "Authority", "Social Justice", "Human Rights", "Public Good", "Private Sphere", "Political Obligation"]),
+                longQuestions: [{
+                    question: "Critically examine the Idealist Theory of the State, referencing Hegel's deification of the state.",
+                    structure: [
+                        "PHILOSOPHICAL FOUNDATIONS: The State as 'Perfected Rationality'. Idealism as the belief that 'Ideas' precede 'Material reality'.",
+                        "THE HEGELIAN SYNTHESIS: The State as the 'March of God on Earth'. Family (Thesis) -> Civil Society (Antithesis) -> State (Synthesis).",
+                        "THE ORGANIC ANALOGY: The state as a 'Living Moral Organism'. True freedom found only in total obedience to the state's laws.",
+                        "CRITICAL REPERCUSSIONS: The deification of the state as a precursor to Totalitarianism. Sacrifice of Individual Rights.",
+                        "THE ENGLISH IDEALIST CORRECTIVE: T.H. Green and 'Will, not force, is the basis of the State'.",
+                        "PHENO-MENOLOGICAL CRITIQUE: Anti-democratic tendencies and rejection of International Law.",
+                        "FINAL EVALUATION: Why Idealism remains relevant for understanding social cohesion despite its liberal shortcomings."
+                    ]
+                }]
+            },
+            {
+                id: 13,
+                title: "Islamic Concept of the State",
+                summary: "A study of the Theo-Democratic principles based on Divine Sovereignty.",
+                mindMap: {
+                    label: "Islamic Polity",
+                    children: [
+                        { label: "Theological Core: Allah's Sovereignty" },
+                        { label: "Human Agency: Khilafat (Vicegerency)" },
+                        { label: "Operational Principle: Shura (Consultation)" },
+                        { label: "Legal Framework: Shariah" }
+                    ]
+                },
+                flashcards: generateCards(13, ["Sovereignty of Allah", "Khilafat", "Shura", "Adl", "Musaawat", "Shariah", "Ummah", "Dhimmis", "Jizya", "Zakat", "Bait-ul-Mal", "Ijtihad", "Ijma", "Qiyas", "Tawhid", "Vicegerency", "Oath of Allegiance", "Amr-bil-Ma'roof", "Nahi-anil-Munkar", "Charter of Medina", "Asabiya", "Ibn Khaldun", "Al-Mawardi", "Majlis-e-Shoora", "Social Welfare", "Islamic Democracy", "Theo-Democracy", "Spiritual Authority", "Temporal Authority", "Legal Equality"]),
+                longQuestions: [{
+                    question: "Elucidate the core tenets of the Islamic Concept of State, contrasting it with Western Secular Democracy.",
+                    structure: [
+                        "CONCEPTUAL ARCHITECTURE: The 'Theo-Democracy' Model. Sovereignty belongs to Allah (Absolute) while political administration belongs to the Ummah (Delegated).",
+                        "THE DOCTRINE OF KHILAFAT (VICEGERENCY): Man as the 'Khalifa' (Trustee). Duties of the ruler: Protection of Deen and Dunya.",
+                        "THE INSTITUTION OF SHURA (CONSULTATION): Quranic mandate. Shura as a check on executive despotism and a mechanism for consensus.",
+                        "THE SUPREMACY OF SHARIAH: The Ruler is under the Law, not above it. The concept of 'Adl' (Justice) as the raison d'être of the state.",
+                        "RIGHTS OF MINORITIES (DHIMMIS): The pluralistic foundations established by the Charter of Medina. Protection of life and property.",
+                        "DIALECTICAL COMPARISON: Secularism (Neutrality) vs. Islamic Integration. Sovereignty of the People vs. Sovereignty of Allah.",
+                        "EPILOGUE: The modern relevance of the Medina Model in establishing an ethical political system."
+                    ]
+                }]
+            },
+            {
+                id: 14,
+                title: "Theories of the Nature of the State",
+                summary: "Analyzing the state as either a biological organism or a mechanistic instrument.",
+                mindMap: {
+                    label: "The Ontological Nature",
+                    children: [
+                        { label: "Organic Theory: Spencer's Biological Analogy" },
+                        { label: "Mechanistic Theory: Utilitarian Tool" },
+                        { label: "Juristic Theory: Legal Personality" }
+                    ]
+                },
+                flashcards: generateCards(14, ["Organic Theory", "Mechanistic Theory", "Juristic Theory", "Biological Analogy", "Cellular Structure", "Functional Interdependence", "Sustaining System", "Distributing System", "Regulating System", "Discrete structure", "Concrete structure", "Artificial creation", "Legal Person", "Will of the State", "Pluralism", "Monism", "Sovereign Power", "Social Solidarity", "Instrumentalism", "Natural Growth", "Evolutionary change", "Herbert Spencer", "Bluntschli", "Corporate Entity", "Public Authority", "Collective Will", "Individualism", "Totalitarianism", "Liberalism", "Statism"]),
+                longQuestions: [{
+                    question: "Critically evaluate Herbert Spencer's Organic Theory of the State.",
+                    structure: [
+                        "THEORETICAL PREMISE: The State as a Biological Extension. Origins in Plato's 'Body Politic' and Aristotle's organicism.",
+                        "SPENCER'S THREE-FOLD ANALOGY: [Sustaining System] - Digestion (Industry). [Distributing System] - Vascular (Commerce). [Regulating System] - Nervous (Government).",
+                        "DEVELOPMENTAL PARALLELS: Growth from simplicity to complexity. Functional Interdependence of constituent parts.",
+                        "THE CRITICAL DISCREPANCY: 'Concrete' vs 'Discrete' structures. Parts exist for the whole vs. Whole exists for the parts.",
+                        "SCIENTIFIC CRITIQUES: Consciousness (One brain vs millions). Reproduction (Organisms multiply, states don't). Deterministic danger.",
+                        "INTELLECTUAL LEGACY: Its role in early Sociology and its rejection by modern 'Mechanistic' thinkers.",
+                        "SYNTHETIC SUMMARY: Reinterpreting the state as a 'Social' organism rather than a 'Biological' one."
+                    ]
+                }]
+            }
+        ];
+
+        // --- COMPONENTS ---
+
+        const MindMap = ({ node, level = 0 }) => {
+            const colors = ['bg-indigo-700 border-indigo-800 shadow-indigo-200', 'bg-blue-600 border-blue-700 shadow-blue-200', 'bg-emerald-600 border-emerald-700 shadow-emerald-200', 'bg-slate-600 border-slate-700 shadow-slate-200'];
+            const colorClass = colors[level % colors.length];
+
+            return (
+                <div className="flex items-center gap-16 relative py-3">
+                    <div className={`mindmap-node px-8 py-5 rounded-2xl border-2 shadow-xl text-white font-extrabold transition-all hover:scale-110 z-10 text-center uppercase tracking-wider ${colorClass}`}>
+                        {node.label}
+                    </div>
+                    {node.children && node.children.length > 0 && (
+                        <div className="flex flex-col gap-8 relative">
+                            {node.children.map((child, idx) => (
+                                <div key={idx} className="flex items-center relative pl-16">
+                                    {/* Curved Connector SVG */}
+                                    <svg className="absolute left-0 top-1/2 w-16 h-12 overflow-visible pointer-events-none" style={{ transform: 'translateY(-50%)' }}>
+                                        <path d="M 0 50% C 32 50%, 32 50%, 64 50%" fill="none" stroke="#cbd5e1" strokeWidth="3" />
+                                    </svg>
+                                    <MindMap node={child} level={level + 1} />
+                                </div>
+                            ))}
+                            {node.children.length > 1 && (
+                                <div className="absolute left-0 bg-slate-300 w-1" style={{ top: 'calc(0% + 32px)', bottom: 'calc(0% + 32px)' }}></div>
+                            )}
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const Flashcards = ({ cards }) => {
+            const [index, setIndex] = useState(0);
+            const [flipped, setFlipped] = useState(false);
+            const current = cards[index];
+
+            const move = (dir) => { setFlipped(false); setTimeout(() => setIndex((prev) => (prev + dir + cards.length) % cards.length), 200); };
+
+            return (
+                <div className="max-w-2xl mx-auto py-16 flex flex-col items-center gap-12">
+                    <div className={`flip-card w-full h-96 cursor-pointer ${flipped ? 'flipped' : ''}`} onClick={() => setFlipped(!flipped)}>
+                        <div className="flip-card-inner relative w-full h-full text-center">
+                            <div className="flip-card-front absolute w-full h-full bg-white border-[6px] border-indigo-50 rounded-[3rem] shadow-2xl flex flex-col items-center justify-center p-12">
+                                <span className="text-indigo-400 text-sm font-black uppercase mb-6 tracking-[0.3em]">Knowledge Inquiry</span>
+                                <h3 className="text-3xl font-black text-slate-800 serif leading-tight">{current.question}</h3>
+                            </div>
+                            <div className="flip-card-back absolute w-full h-full academic-gradient rounded-[3rem] shadow-2xl flex flex-col items-center justify-center p-12 text-white">
+                                <span className="text-indigo-300 text-sm font-black uppercase mb-6 tracking-[0.3em]">Theoretical Insight</span>
+                                <p className="text-2xl italic leading-relaxed font-medium">{current.answer}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex items-center gap-12">
+                        <button onClick={(e) => {e.stopPropagation(); move(-1);}} className="group p-5 bg-white shadow-xl rounded-full hover:bg-indigo-600 transition-all text-indigo-600 hover:text-white border border-slate-100">
+                           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        <span className="text-slate-900 text-xl font-black tracking-tighter bg-slate-200 px-6 py-2 rounded-full">{index + 1} / {cards.length}</span>
+                        <button onClick={(e) => {e.stopPropagation(); move(1);}} className="group p-5 bg-white shadow-xl rounded-full hover:bg-indigo-600 transition-all text-indigo-600 hover:text-white border border-slate-100">
+                           <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
+            );
+        };
+
+        const LongQuestions = ({ questions }) => (
+            <div className="max-w-5xl mx-auto py-12 space-y-20">
+                <div className="academic-gradient text-white p-12 rounded-[3rem] shadow-2xl border-b-[12px] border-indigo-500 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 p-10 opacity-10">
+                        <svg className="w-48 h-48" fill="currentColor" viewBox="0 0 20 20"><path d="M9 4.804A7.994 7.994 0 0110 5a7.994 7.994 0 011 4.804V10a2 2 0 11-4 0v-5.196z"/></svg>
+                    </div>
+                    <h2 className="text-4xl font-black mb-6 tracking-tight">Advanced Essay Blueprints</h2>
+                    <p className="text-indigo-200 text-xl serif italic leading-relaxed max-w-2xl">Deploy these structural hierarchies to construct comprehensive academic theses exceeding 10 pages in analytical depth.</p>
+                </div>
+                {questions.map((q, i) => (
+                    <div key={i} className="bg-white rounded-[3rem] shadow-2xl border border-slate-100 overflow-hidden">
+                        <div className="bg-slate-50 border-b-2 border-slate-100 p-10">
+                            <h3 className="text-3xl font-black text-slate-900 leading-tight italic serif">"{q.question}"</h3>
+                        </div>
+                        <div className="p-12 space-y-12">
+                            {q.structure.map((item, idx) => {
+                                const parts = item.split(':');
+                                const heading = parts[0];
+                                const content = parts.slice(1).join(':');
+                                return (
+                                    <div key={idx} className="group relative">
+                                        <div className="flex items-start gap-6">
+                                            <div className="shrink-0 w-12 h-12 rounded-2xl academic-gradient text-white flex items-center justify-center font-black text-lg shadow-lg">
+                                                {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                                            </div>
+                                            <div className="flex-1">
+                                                <h4 className="text-indigo-800 font-black text-base uppercase tracking-[0.25em] mb-4">
+                                                    {heading}
+                                                </h4>
+                                                {content && (
+                                                    <div className="pl-6 border-l-4 border-slate-100 group-hover:border-indigo-400 transition-all py-2">
+                                                        <p className="text-slate-800 text-xl leading-relaxed font-medium serif">{content}</p>
+                                                    </div>
+                                                )}
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                        <div className="bg-indigo-50 p-8 text-center">
+                            <p className="text-indigo-700 font-black text-sm uppercase tracking-widest">Recommended Word Count: 1,500 - 3,000 | Citations Needed: 5+</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        );
+
+        // --- MAIN APP COMPONENT ---
+
+        const App = () => {
+            const [activeId, setActiveId] = useState(9);
+            const [view, setView] = useState('mindmap');
+            const activeChapter = useMemo(() => chapters.find(c => c.id === activeId) || chapters[0], [activeId]);
+
+            return (
+                <div className="flex h-screen overflow-hidden bg-slate-50">
+                    {/* SIDEBAR */}
+                    <aside className="w-96 bg-slate-900 shrink-0 flex flex-col shadow-2xl z-20">
+                        <div className="p-10 border-b border-slate-800">
+                            <h1 className="text-3xl font-black text-white tracking-tighter">POLISCI PRO</h1>
+                            <div className="flex items-center gap-2 mt-2">
+                                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+                                <p className="text-indigo-400 text-xs font-black tracking-[0.3em] uppercase">Master Level</p>
+                            </div>
+                        </div>
+                        <nav className="flex-1 overflow-y-auto p-8 space-y-4 no-scrollbar">
+                            {chapters.map(c => (
+                                <button key={c.id} onClick={() => setActiveId(c.id)} className={`w-full text-left px-6 py-5 rounded-[1.5rem] transition-all duration-300 transform ${activeId === c.id ? 'bg-indigo-600 text-white shadow-2xl shadow-indigo-900/50 scale-105' : 'text-slate-400 hover:bg-slate-800 hover:text-white'}`}>
+                                    <div className="text-[10px] font-black opacity-60 mb-2 uppercase tracking-[0.2em]">Module {c.id}</div>
+                                    <div className="font-extrabold text-base leading-snug">{c.title}</div>
+                                </button>
+                            ))}
+                        </nav>
+                        <div className="p-8 border-t border-slate-800 text-slate-500 text-[10px] font-bold text-center tracking-widest">
+                            © 2025 ACADEMIC STUDY SUITE
+                        </div>
+                    </aside>
+
+                    {/* MAIN VIEW */}
+                    <main className="flex-1 flex flex-col overflow-hidden relative">
+                        <header className="bg-white border-b border-slate-200 px-16 py-10 flex justify-between items-center shrink-0">
+                            <div className="max-w-3xl">
+                                <h2 className="text-4xl font-black text-slate-900 tracking-tight leading-none">{activeChapter.title}</h2>
+                                <p className="text-slate-500 font-bold text-lg mt-3 serif italic">{activeChapter.summary}</p>
+                            </div>
+                        </header>
+                        
+                        {/* VIEW TOGGLE */}
+                        <div className="px-16 py-6 bg-white border-b border-slate-200 flex gap-4 overflow-x-auto no-scrollbar shrink-0">
+                            {[
+                                {id: 'mindmap', label: 'Mind Map', icon: 'M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1'},
+                                {id: 'flashcards', label: 'Flashcards', icon: 'M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z'},
+                                {id: 'longs', label: '10-Page Long Essays', icon: 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'}
+                            ].map(btn => (
+                                <button key={btn.id} onClick={() => setView(btn.id)} className={`flex items-center gap-4 px-10 py-4 rounded-full text-sm font-black transition-all duration-300 whitespace-nowrap shadow-sm transform hover:scale-105 ${view === btn.id ? 'bg-indigo-600 text-white shadow-indigo-200 shadow-xl' : 'bg-slate-100 text-slate-500 hover:bg-slate-200'}`}>
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d={btn.icon}></path></svg>
+                                    {btn.label}
+                                </button>
+                            ))}
+                        </div>
+
+                        {/* SCROLLABLE CONTENT */}
+                        <div className="flex-1 overflow-y-auto p-16 bg-slate-50/50">
+                            <div className="h-full">
+                                {view === 'mindmap' && (
+                                    <div className="bg-white rounded-[4rem] shadow-2xl border border-slate-100 p-24 overflow-x-auto min-h-full flex items-center justify-center">
+                                       <MindMap node={activeChapter.mindMap} />
+                                    </div>
+                                )}
+                                {view === 'flashcards' && <Flashcards cards={activeChapter.flashcards} />}
+                                {view === 'longs' && <LongQuestions questions={activeChapter.longQuestions} />}
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
